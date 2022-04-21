@@ -41,6 +41,7 @@ module.exports.loginPost = function(req,res){
 module.exports.registerPost = function(req,res){
     
     // ### verify all information ###
+    console.log(req.body.Password,req.body.PasswordVerify)
     if (req.body.Password == req.body.PasswordVerify){
         var newUser = new User({
             name: req.body.Name,
@@ -50,13 +51,11 @@ module.exports.registerPost = function(req,res){
             phone: req.body.PhoneNumber
         })
 
-        newUser.save(function(err){
-
-        });
+        newUser.save();
     } 
     else {
         // #### send error message ####
-        res.render('register'); 
+        ///
     }
 
     res.render('index'); 

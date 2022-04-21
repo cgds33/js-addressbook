@@ -9,6 +9,7 @@ var path = require('path');
 var app = express();
 var apiRouter = require('./app_server/routers/api_router');
 var pages = require('./app_server/routers/html_router');
+var db = require('./app_server/models/db')
 
 // mongoose connection
 var mongoose = require('mongoose')
