@@ -25,5 +25,4 @@ router.get('/register', pages.register);
 router.post('/login', authorization.loginPost);
 router.post('/register', authorization.registerPost);
 
-
 module.exports = router;
