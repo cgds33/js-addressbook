@@ -12,7 +12,6 @@ var pages = require('./app_server/routers/html_router');
 
 var db = require('./app_server/models/db') // #####
 
-
 // mongoose connection
 const mongoose = require('mongoose')
 const mongoDB = 'mongodb://localhost/exampleInc';
@@ -24,11 +23,16 @@ const ejsLayouts = require('express-ejs-layouts')
 
 // session connection
 const session = require('express-session');
+app.set('trust proxy', 1)
 app.use(session({
 	secret: 'secret',
 	resave: true,
-	saveUninitialized: true
+	saveUninitialized: true,
 }));
+
+// ##########################
+var cookieParser = require('cookie-parser')
+app.use(cookieParser());
 
 // views engine
 app.engine('html', require('ejs').renderFile);
@@ -47,6 +51,8 @@ app.use('/public',express.static(path.join(__dirname,'app_server/public')));
 // logger middleware
 app.use(function(req,res,next){
     console.log('Logger: '+ req.method + " " + req.url + " " + req.ip );
+	console.log(req.session.user, req.session.db_id) // #######
+	console.log(req.session)
     next();
 });
 

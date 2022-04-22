@@ -1,7 +1,8 @@
 
 // This modules for session/login/request/logout processes
-
+const express = require('express');
 const context = require('bluebird/js/release/context');
+const session = require('express-session');
 var User = require('../models/users');
 
 
@@ -18,28 +19,37 @@ module.exports.loginPost = function(req,res){
             if (docs != []) {
 
                 if (docs[0]['password'] === req.body.Password) {
+                    req.session.userId = docs[0]._id.toString()
+                    var hour = 3600000;
+                    req.session.cookie.expires = new Date(Date.now() + hour);
                     req.session.loggedin = true;
-                    req.session.username = req.body.Email;
-                    req.session.id = docs[0]._id.toString()
+                    req.session.user = req.body.Email;
+                    //req.session.token = accessToken;
+                    req.session.save((err) => {
+                        console.log(req.session);
+                    });
+
+
+                    
                     //req.session._id = docs[0]['_id'];
                     console.log("login successfull")
                     console.log(docs[0]._id.toString())
                     //console.log(docs[0]['_id'])
-                    //res.render('index');
+                    res.redirect('/');
                 }
                 else {
                     console.log("wrong pass")
-                    //res.render('login');
+                    res.redirect('login');
                 }
             }
             else {
                 console.log("wrong email and password")
-                //res.render('login');
+                res.redirect('login');
             }
         }
     });
     // console.log(loginUser);
-    res.render('login');
+    //res.render('login');
 };
 
 module.exports.registerPost = function(req,res){
@@ -56,11 +66,10 @@ module.exports.registerPost = function(req,res){
         })
 
         newUser.save();
+        res.redirect('/');
     } 
     else {
         // #### send error message ####
-        ///
+        res.redirect('register');
     }
-
-    res.render('index'); 
 };
