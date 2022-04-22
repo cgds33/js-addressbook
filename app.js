@@ -1,4 +1,4 @@
-// app's main folder
+// app's main file
 
 "use strict"; 
 
