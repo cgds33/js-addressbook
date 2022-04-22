@@ -4,21 +4,22 @@
 
 var fs = require('fs');
 
-var express = require('express');
-var path = require('path');
-var app = express();
+const express = require('express');
+const path = require('path');
+const app = express();
 var apiRouter = require('./app_server/routers/api_router');
 var pages = require('./app_server/routers/html_router');
-var db = require('./app_server/models/db')
+
+var db = require('./app_server/models/db') // #####
 
 // mongoose connection
-var mongoose = require('mongoose')
-var mongoDB = 'mongodb://localhost/exampleInc';
+const mongoose = require('mongoose')
+const mongoDB = 'mongodb://localhost/exampleInc';
 mongoose.connect(mongoDB)
 
 // body parser for post requests
-var bodyParser = require('body-parser')
-var ejsLayouts = require('express-ejs-layouts')
+const bodyParser = require('body-parser')
+const ejsLayouts = require('express-ejs-layouts')
 
 // session connection
 const session = require('express-session');

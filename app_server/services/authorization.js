@@ -2,11 +2,11 @@
 // This modules for session/login/request/logout processes
 
 const context = require('bluebird/js/release/context');
-var path = require('path');
 var User = require('../models/users');
 
+
 module.exports.loginPost = function(req,res){
-    /*
+
     console.log(req.body);
     var loginUser = User.find({email:req.body.Email},function(err,docs){
         if (err){
@@ -19,7 +19,7 @@ module.exports.loginPost = function(req,res){
 
                 if (docs[0]['password'] === req.body.Password) {
                     req.session.loggedin = true;
-                    req.session.username = Email;
+                    req.session.username = req.body.Email;
                     console.log("login successfull")
                     //res.render('index');
                 }
@@ -34,7 +34,7 @@ module.exports.loginPost = function(req,res){
             }
         }
     });
-    // console.log(loginUser);*/
+    // console.log(loginUser);
     res.render('login');
 };
 
