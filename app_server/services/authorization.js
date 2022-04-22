@@ -20,7 +20,11 @@ module.exports.loginPost = function(req,res){
                 if (docs[0]['password'] === req.body.Password) {
                     req.session.loggedin = true;
                     req.session.username = req.body.Email;
+                    req.session.id = docs[0]._id.toString()
+                    //req.session._id = docs[0]['_id'];
                     console.log("login successfull")
+                    console.log(docs[0]._id.toString())
+                    //console.log(docs[0]['_id'])
                     //res.render('index');
                 }
                 else {
