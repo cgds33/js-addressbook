@@ -49,7 +49,7 @@ module.exports.loginPost = function(req,res){
         }
     });
     // console.log(loginUser);
-    //res.render('login');
+    //res.redirect('login');
 };
 
 module.exports.registerPost = function(req,res){

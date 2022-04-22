@@ -17,22 +17,27 @@ const mongoose = require('mongoose')
 const mongoDB = 'mongodb://localhost/exampleInc';
 mongoose.connect(mongoDB)
 
-// body parser for post requests
-const bodyParser = require('body-parser')
-const ejsLayouts = require('express-ejs-layouts')
 
 // session connection
 const session = require('express-session');
+
+// connect to mongo for save session
+const MongoStore = require('connect-mongo')(session);
+
 app.set('trust proxy', 1)
 app.use(session({
 	secret: 'secret',
 	resave: true,
 	saveUninitialized: true,
+	store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
-// ##########################
-var cookieParser = require('cookie-parser')
-app.use(cookieParser());
+// body parser for post requests
+const bodyParser = require('body-parser')
+const ejsLayouts = require('express-ejs-layouts')
+
+
+
 
 // views engine
 app.engine('html', require('ejs').renderFile);

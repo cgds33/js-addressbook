@@ -5,11 +5,15 @@ const session = require('express-session');
 var path = require('path');
 
 module.exports.addressbook = function(req,res){
+
     res.render('addressbook'); //{ message: 'This is address book'}
 };
 
 module.exports.addAddress = function(req,res){
-    res.render('add_address');
+    if(req.session.userId){
+        return res.render('add_address');
+    }
+    res.redirect('login');
 };
 
 module.exports.addAddressPost = function(req,res){
@@ -18,7 +22,7 @@ module.exports.addAddressPost = function(req,res){
     console.log(req.body.Password,req.body.PasswordVerify)
     if (req.body.Password == req.body.PasswordVerify){
         var newAddress = new User({
-            user_id: req.session.id,
+            user_id: req.session.userId,
             phone: req.body.PhoneNumber,
             name_surname: req.body.NameSurname,
             email: req.body.Email,
