@@ -7,6 +7,6 @@ var router = express.Router();
 var api = require('../services/api_services')
 
 
-router.get('/adduser', api.addUser);
+router.post('/adduser', api.addUser);
 
 module.exports = router;

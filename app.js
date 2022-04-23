@@ -37,8 +37,6 @@ const bodyParser = require('body-parser')
 const ejsLayouts = require('express-ejs-layouts')
 
 
-
-
 // views engine
 app.engine('html', require('ejs').renderFile);
 app.set('view engine','ejs');

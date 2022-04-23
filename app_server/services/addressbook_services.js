@@ -3,6 +3,7 @@
 "use strict";
 const session = require('express-session');
 var path = require('path');
+var Address = require('../models/address');
 
 module.exports.addressbook = function(req,res){
 
@@ -21,7 +22,7 @@ module.exports.addAddressPost = function(req,res){
     // ### add new adress ###
     console.log(req.body.Password,req.body.PasswordVerify)
     if (req.body.Password == req.body.PasswordVerify){
-        var newAddress = new User({
+        var newAddress = new Address({
             user_id: req.session.userId,
             phone: req.body.PhoneNumber,
             name_surname: req.body.NameSurname,
@@ -35,27 +36,4 @@ module.exports.addAddressPost = function(req,res){
     }
     console.log(req.body);
     res.render('addressbook');
-};
-
-
-module.exports.registerPost = function(req,res){
-    
-    // ### verify all information ###
-    console.log(req.body.Password,req.body.PasswordVerify)
-    if (req.body.Password == req.body.PasswordVerify){
-        var newUser = new User({
-            name: req.body.Name,
-            surname: req.body.Surname,
-            email: req.body.Email,
-            password: req.body.Password,
-            phone: req.body.PhoneNumber
-        })
-
-        newUser.save();
-    } 
-    else {
-        // #### send error message ####
-    }
-
-    res.render('index'); 
 };
