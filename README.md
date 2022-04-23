@@ -22,6 +22,8 @@ There are structures that give general information about the services. Newly cre
 
 ## Project API Services
 
+<br>
+
 ### Address Book
 
 API methods contain the login information of the users in the requests of the posts. The transaction takes place through this information.
@@ -41,6 +43,7 @@ Each user's address list can contain a person with the same name. This name will
 	}
 }
 
+<br>
 
 #### `POST >> "/api/add_address"`
 
@@ -62,35 +65,44 @@ The information of the address to be created should be sent with the keyword "in
 
 When creating a new address, name, address and phone keywords should be sent.
 
+<br>
 
 #### `DELETE >> "/api/delete/by_name"`
 
 This method deletes an address based on the "name_surname" information sent in the "info".
 
+<br>
 
 #### `UPDATE >> "/api/update_address"`
 
 This method is just like creating a new address, but the "info" keyword must contain the name to be updated and the information to be updated must be sent within the "update" keyword.
 
+<br>
 
 #### `GET >> "/api/fetch/by_name"`
 
 It is used to call all the data in the address information by name. The "info" keyword must contain the "name_surname".
 
+<br>
 
 #### `GET >> "/api/fetch/email"`
 
 It is used to call all the data in the address information by email. The "info" keyword must contain the "email".
 
+<br>
 
 #### `GET >> "/api/fetch/phone"`
 
 It is used to call all the data in the address information by phone. The "info" keyword must contain the "phone".
 
+<br>
 
 #### `GET >> "/api/fetch/all"`
 
 It is used to call all addresses of the user. You don't need to send any information in "info".
+
+<br>
+
 
 
 
