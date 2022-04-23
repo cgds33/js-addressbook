@@ -107,15 +107,9 @@ It is used to call all addresses of the user. You don't need to send any informa
 
 Responses come as a json with two keywords. These are the keywords "answer" and "msg".
 
-<br>
-
 For example: { "answer": "success","msg": "address was deleted" }
 
-<br>
-
 The keyword "answer" takes two values, "success" and "error", and indicates whether the request was successful.
-
-<br>
 
 The "msg" keyword contains the reason for the "answer" key. 
 
