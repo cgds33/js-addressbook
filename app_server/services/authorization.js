@@ -20,16 +20,16 @@ module.exports.loginPost = function(req,res){
         res.redirect('login');
 
     } else {
-        console.log(req.body);
+
         var loginUser = User.find({email:req.body.Email},function(err,docs){
             if (err){
                 console.log(err)
             }
             else {
-                
+
                 // If mongoose res not empity:
-                if (docs != []) {
-    
+                if (docs[0] !== []) {
+                    
                     if (docs[0]['password'] === req.body.Password) {
                         
                         // Create login session 

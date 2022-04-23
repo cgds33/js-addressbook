@@ -6,7 +6,65 @@
             <%= sessionFlash.message %>
         </div>
     <% } %>
-    
-    <h2>API Service</h2>
+
+    <h2>Address Book API Services</h2>
     <hr><br>
+
+    <p>
+        API methods contain the login information of the users in the requests of the posts. The transaction takes place through this information.
+        <br><br>
+        <i>{ "user": { "userEmail": "example@example.com", "userPassword": "examplePassword" } }</i>
+        <br><br>
+        Each user's address list can contain a person with the same name. This name will be sent to the server side in operations such as updating or deleting.
+        <br><br>
+        <i>{ "info": { "name_surname":"updatedName" } }</i>
+        <br><br><br>
+        <b>POST >> "/api/add_address"</b>
+        <br><br>
+        This request; creates a new address record.
+        <br><br>
+        The information of the address to be created should be sent with the keyword "info".
+        <br><br>
+        <i>{ "info": { "name_surname":"exampleName", "address":"exampleAddress", "phone":"+905555555555", "workPhone":"+906666666666", "email":"example@example.com", "workEmail":"example@work.com", "companyName":"exampleCompany" } }</i>
+        <br><br>
+        When creating a new address, name, address and phone keywords should be sent.
+        <br><br><br>
+        <b>DELETE >> "/api/delete/by_name"</b>
+        <br><br>
+        This method deletes an address based on the "name_surname" information sent in the "info".
+        <br><br><br>
+        <b>UPDATE >> "/api/update_address"</b>
+        <br><br>
+        This method is just like creating a new address, but the "info" keyword must contain the name to be updated and the information to be updated must be sent within the "update" keyword.
+        <br><br><br>
+        <b>GET >> "/api/fetch/by_name"</b>
+        <br><br>
+        It is used to call all the data in the address information by name. The "info" keyword must contain the "name_surname".
+        <br><br><br>
+        <b>GET >> "/api/fetch/email"</b>
+        <br><br>
+        It is used to call all the data in the address information by email. The "info" keyword must contain the "email".
+        <br><br><br>
+        <b>GET >> "/api/fetch/phone"</b>
+        <br><br>
+        It is used to call all the data in the address information by phone. The "info" keyword must contain the "phone".
+        <br><br><br>
+        <b>GET >> "/api/fetch/all"</b>
+        <br><br>
+        It is used to call all addresses of the user. You don't need to send any information in "info".
+        <br><br>
+    </p><br>
+    <h4>Response</h4>
+    <hr><br>
+    <p>
+        Responses come as a json with two keywords. These are the keywords "answer" and "msg". 
+        <br><br>
+        <i>For example: { "answer": "success","msg": "address was deleted" }</i>
+        <br><br>
+        The keyword "answer" takes two values, "success" and "error", and indicates whether the request was successful. 
+        <br><br>
+        The "msg" keyword contains the reason for the "answer" key.
+        <br>
+    </p>
+    <br><br><br><br><br><br>
 </div>

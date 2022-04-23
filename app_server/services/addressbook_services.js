@@ -7,7 +7,20 @@ var Address = require('../models/address');
 
 module.exports.addressbook = function(req,res){
 
-    res.render('addressbook'); //{ message: 'This is address book'}
+    if (req.session.loggedin === true) {
+        var addresses = Address.find({userId: req.session.userId},function(err,docs){
+            if (err){
+                res.render('addressbook',{addresses:[]});
+            } else if (docs != []) {
+                console.log(docs.body,docs)
+                res.render('addressbook',{addresses:docs});
+            } else {
+                res.render('addressbook',{addresses:[]});
+            }
+        });
+    } else {
+        res.render('addressbook',{addresses:[]});
+    }
 };
 
 module.exports.addAddress = function(req,res){
