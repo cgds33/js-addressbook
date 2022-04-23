@@ -1,7 +1,24 @@
 # js-addressbook
 
-# This project is not finished yet. 
+## This project is not finished yet. 
 
+## Summary
+
+This project is a project that includes the architecture where new services can be added easily and includes the "address book" application as its first service.
+
+New services to be created will be seamlessly added to this project. It includes session control and provides API support for the mobile app. This API support will be developed according to new applications to be written for different platforms.
+
+Built using JavaScript and mongoDB. While creating this structure, a modular structure was used.
+
+<br>
+
+## Web interface
+
+There are pages in the web interface where data can be entered directly. Also, the entered data is listed.
+
+There are structures that give general information about the services. Newly created services can be added here.
+
+<br>
 
 ## Project API Services
 
