@@ -8,7 +8,7 @@ This project is a project that includes the architecture where new services can 
 
 New services to be created will be seamlessly added to this project. It includes session control and provides API support for the mobile app. This API support will be developed according to new applications to be written for different platforms.
 
-Built using JavaScript and mongoDB. While creating this structure, a modular structure was used.
+Built using JavaScript and mongoDB. While creating this application, a modular structure was used.
 
 <br>
 
