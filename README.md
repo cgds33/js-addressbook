@@ -24,7 +24,7 @@ There are structures that give general information about the services. Newly cre
 
 <br>
 
-### Address Book
+### Address Book API
 
 API methods contain the login information of the users in the requests of the posts. The transaction takes place through this information.
 
@@ -103,6 +103,23 @@ It is used to call all addresses of the user. You don't need to send any informa
 
 <br>
 
+### Response
+
+Responses come as a json with two keywords. These are the keywords "answer" and "msg".
+
+<br>
+
+For example: { "answer": "success","msg": "address was deleted" }
+
+<br>
+
+The keyword "answer" takes two values, "success" and "error", and indicates whether the request was successful.
+
+<br>
+
+The "msg" keyword contains the reason for the "answer" key. 
+
+<br><br>
 
 
 
