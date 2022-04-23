@@ -20,20 +20,34 @@ module.exports.addAddress = function(req,res){
 module.exports.addAddressPost = function(req,res){
 
     // ### add new adress ###
-    console.log(req.body.Password,req.body.PasswordVerify)
-    if (req.body.Password == req.body.PasswordVerify){
+    if (!req.body.PhoneNumber || !req.body.NameSurname || !req.body.Email || !req.body.Address) {
+
+        req.session.sessionFlash = {
+            type: 'alert alert-danger',
+            message: 'Fill in the blanks!'
+        }
+        res.redirect('add_address');
+
+    } else {
+
         var newAddress = new Address({
-            user_id: req.session.userId,
+            userId: req.session.userId,
             phone: req.body.PhoneNumber,
             name_surname: req.body.NameSurname,
             email: req.body.Email,
-            address: req.body.Address
+            address: req.body.Address,
+            city: req.body.City
+    
         })
+
         newAddress.save();
-    } 
-    else {
-        // #### send error message ####
+    
+        req.session.sessionFlash = {
+            type: 'alert alert-success',
+            message: 'New address successfully registered!'
+        }
+    
+        res.redirect('addressbook');
+
     }
-    console.log(req.body);
-    res.render('addressbook');
 };

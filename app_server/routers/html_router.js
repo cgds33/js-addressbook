@@ -12,6 +12,8 @@ var authorization = require('../services/authorization')
 router.get('/', pages.index);
 router.get('/api_page', pages.apiPage);
 router.get('/whyus', pages.whyus);
+router.get('/follow', pages.follow);
+
 router.get('/addressbook', addressBook.addressbook);
 
 router.get('/add_address', addressBook.addAddress);

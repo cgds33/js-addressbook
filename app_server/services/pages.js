@@ -16,6 +16,10 @@ module.exports.whyus = function(req,res){
     res.render('whyus'); //{ message: 'This is why us'}
 };
 
+module.exports.follow = function(req,res){
+    res.render('follow');
+};
+
 module.exports.login = function(req,res){
     res.render('login'); 
 };

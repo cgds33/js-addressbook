@@ -1,8 +1,15 @@
 <div class="container">
+
+  <% if(sessionFlash){ %>
+    <div class="<%= sessionFlash.type %>">
+        <%= sessionFlash.message %>
+    </div>
+  <% } %>
+
   <h2>Add Address</h2>
   <hr><br>
 
-  <form action="/addressbook" method="POST">
+  <form action="/add_address" method="POST">
     <div class="form-group">
         <label for="inputAddress">Phone Number</label>
         <input type="text" class="form-control" id="inputNumber" name="PhoneNumber" placeholder="+90 500 000 00 00">
@@ -17,7 +24,7 @@
     <div class="form-group">
         <label for="inputEmail">E-mail</label>
         <input type="email" class="form-control" id="inputEmail" name="Email" placeholder="Email">
-      </div>
+    </div>
 
     <div class="form-row">
         <div class="form-group col-md-6">

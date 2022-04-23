@@ -1,5 +1,11 @@
 <div class="container">
 
+  <% if(sessionFlash){ %>
+    <div class="<%= sessionFlash.type %>">
+        <%= sessionFlash.message %>
+    </div>
+  <% } %>
+
     <h2>Register</h2>
     <hr><br>
     <form action="/register" method="POST">
