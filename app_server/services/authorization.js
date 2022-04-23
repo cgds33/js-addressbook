@@ -19,22 +19,19 @@ module.exports.loginPost = function(req,res){
             if (docs != []) {
 
                 if (docs[0]['password'] === req.body.Password) {
+
                     req.session.userId = docs[0]._id.toString()
-                    var hour = 3600000;
-                    req.session.cookie.expires = new Date(Date.now() + hour);
+                    req.session.cookie.expires = new Date(Date.now() + 3600000);
                     req.session.loggedin = true;
                     req.session.user = req.body.Email;
-                    //req.session.token = accessToken;
+
                     req.session.save((err) => {
                         console.log(req.session);
                     });
 
-
-                    
-                    //req.session._id = docs[0]['_id'];
                     console.log("login successfull")
                     console.log(docs[0]._id.toString())
-                    //console.log(docs[0]['_id'])
+
                     res.redirect('/');
                 }
                 else {
@@ -48,7 +45,7 @@ module.exports.loginPost = function(req,res){
             }
         }
     });
-    // console.log(loginUser);
+    
     //res.redirect('login');
 };
 
