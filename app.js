@@ -54,8 +54,6 @@ app.use('/public',express.static(path.join(__dirname,'app_server/public')));
 // logger middleware
 app.use(function(req,res,next){
     console.log('Logger: '+ req.method + " " + req.url + " " + req.ip );
-	console.log(req.session.user, req.session.db_id) // #######
-	console.log(req.session)
     next();
 });
 
