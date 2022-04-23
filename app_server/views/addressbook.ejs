@@ -11,9 +11,7 @@
     <a type="button" class="btn btn-primary" href="/add_address">Add New Address</a>
     <br><hr>
 
-    
-    <% if(addresses != []) { %>
-
+    <% if(addresses) { %>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -30,7 +28,6 @@
             </thead>
             <tbody>
                 <% for(var i=0; i < addresses.length; i++) { %>
-                
                 <tr>
                 <th scope="row"><%= addresses[i].name_surname %></th>
                 <td><%= addresses[i].phone %></td>
@@ -40,13 +37,10 @@
                 <td><%= addresses[i].workEmail %></td>
                 <td><%= addresses[i].city %></td>
                 <td><%= addresses[i].companyName %></td>
-
                 </tr>
                 <% } %>
-
             </tbody>
         </table>
-
     <%} else { %>
     <div class="alert alert-secondary">Henüz adres girdiniz bulunmamaktadır..</div>
     <% } %>

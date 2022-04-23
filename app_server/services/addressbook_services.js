@@ -19,7 +19,11 @@ module.exports.addressbook = function(req,res){
             }
         });
     } else {
-        res.render('addressbook',{addresses:[]});
+        req.session.sessionFlash = {
+            type: 'alert alert-danger',
+            message: 'For view this page, you must first login.'
+        }
+        res.redirect('login');
     }
 };
 
