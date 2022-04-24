@@ -1,7 +1,0 @@
-express
-ejs
-express-ejs-layouts
-mongoose
-bluebird
-popups
-express-session

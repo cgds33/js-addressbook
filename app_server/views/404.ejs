@@ -1,0 +1,10 @@
+<div class="container">
+
+    <% if(sessionFlash){ %>
+        <div class="<%= sessionFlash.type %>">
+            <%= sessionFlash.message %>
+        </div>
+    <% } %>
+
+    <img src="../public/images/thema/404.gif" alt="404"> 
+</div>

@@ -46,7 +46,7 @@ module.exports.loginPost = function(req,res){
                         req.session.user = req.body.Email;
     
                         req.session.save((err) => {
-                            console.log(req.session);
+                            // console.log(req.session);
                         });
                         
                         // Login process is successful, return index with flash message
@@ -126,7 +126,7 @@ module.exports.registerPost = function(req,res){
                     type: 'alert alert-success',
                     message: 'Account created successfully!'
                 }
-                res.redirect('/');
+                res.redirect('login');
             }
         });
     }

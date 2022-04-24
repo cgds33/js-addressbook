@@ -10,6 +10,9 @@ const app = express();
 var apiRouter = require('./app_server/routers/api_router');
 var pages = require('./app_server/routers/html_router');
 
+const host = "0.0.0.0"
+const port = 80
+
 // DB model
 var db = require('./app_server/models/db') // #####
 
@@ -80,5 +83,25 @@ app.use('/api', apiRouter);
 // Html pages
 app.use('/', pages);
 
+// 404 page
+app.use(function(req, res, next) {
+	res.status(404);
+  
+	// respond with html page
+	if (req.accepts('html')) {
+	  res.render('404');
+	  return;
+	}
+  
+	// respond with json
+	if (req.accepts('json')) {
+	  res.json({ error: 'Not found' });
+	  return;
+	}
+  
+	// default to plain-text. send()
+	res.type('txt').send('Not found');
+  });
+
 // ### debugger: True ###
-app.listen(8000);
+app.listen(port,host);
