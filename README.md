@@ -2,7 +2,7 @@
 
 ## Summary
 
-This project is a project that includes the architecture where new services can be added easily and includes the "address book" application as its first service.
+This project is a project that includes the architecture where new services can be added easily and includes the "address book" application as its first service. This service is an application where users save and store their address information.
 
 New services to be created can be seamlessly added to this project. It includes session control and provides API support for the mobile app. This API support will be developed according to new applications to be written for different platforms.
 
@@ -12,11 +12,13 @@ Built using JavaScript and mongoDB. While creating this application, a modular s
 
 ## Project features
 
-Project includes session control and API service. Application saves user and session information to MongoDB.
+Project includes session control. Application saves user and session information to MongoDB.
 
 It has API service and detailed API documentation. 
 
-Currently, there is an application called address book and new applications will be added to the project.
+Html pages are shown with the ejs library and the pages work with router logic. Thus, a modular structure was created.
+
+Currently, there is an application called address book and new applications will be added to the project. 
 
 <br>
 
