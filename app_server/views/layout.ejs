@@ -34,22 +34,63 @@
               <a class="nav-link" href="/whyus">Why Us?</a>
             </li>
           </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/login"> Login </a>
+
+          <% if(locals.user){ %>
+
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/"> Logged in as "<%= locals.user %>"</a>
               </li>
               <li class="nav-item active">
-                <a class="nav-link" href="/register"> Register </a>
-            </ul>
+                <a class="nav-link" href="/logout"> Logout </a>
+              </li>
+            </ul>       
+
+            <%} else { %>
+
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/login"> Login </a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/register"> Register </a>
+                  </li>
+              </ul>
+
+            <% } %>
+          
           </div>
         </div>
       </nav>
-
-    <div style="margin-top: 100px;" class="container">
+    
+    <!-- BODY -->
+    <div style="margin-top: 50px;" class="container">
         <%- body %>
     </div>
+
     <script src="../public/js/jquery-3.2.1.min.js"></script>
     <script src="../public/js/bootstrap.min.js"></script>
+
+  <br><br><br>
+  <br><br><br>
+
+  <!-- FOOTER -->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="footer-top" style="background-color: #d3e2ec;">
+      <div class="container">
+
+        <a href='#'><i class="fa fa-twitch fa-3x fa-fw"></i></a>
+        <a href='#'><i class="fa fa-facebook fa-3x fa-fw"></i></a>
+        <a href='#'><i class="fa fa-twitter fa-3x fa-fw"></i></a>
+        <a href='#'><i class="fa fa-youtube-play fa-3x fa-fw"></i></a>
+        <a href='#'><i class="fa fa-rss fa-3x fa-fw"></i></a>
+        <a href='#'><i class="fa fa-vine fa-3x fa-fw"></i></a>
+        <a href='#'><i class="fa fa-flickr fa-3x fa-fw"></i></a>
+        <a href='#'><i class="fa fa-linkedin fa-3x fa-fw"></i></a>
+
+      </div>
+    </div>
+  <br>
 
 </body>
 </html>

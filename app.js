@@ -37,6 +37,12 @@ app.use(session({
 	store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
+// Session object for templates
+app.use(function(req, res, next) {
+	res.locals.user = req.session.user;
+	next();
+});
+
 // Flash Message Middleware
 app.use((req,res,next) => {
 	res.locals.sessionFlash = req.session.sessionFlash
@@ -46,8 +52,8 @@ app.use((req,res,next) => {
 
 // Body parser for post requests
 const bodyParser = require('body-parser')
-const ejsLayouts = require('express-ejs-layouts')
 
+const ejsLayouts = require('express-ejs-layouts')
 
 // Logger middleware
 app.use(function(req,res,next){
@@ -58,8 +64,9 @@ app.use(function(req,res,next){
 // Request body parser middleware
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(ejsLayouts);
 
+// layouts
+app.use(ejsLayouts);
 
 // Views engine
 app.engine('html', require('ejs').renderFile);

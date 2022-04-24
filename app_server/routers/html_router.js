@@ -27,4 +27,9 @@ router.get('/register', pages.register);
 router.post('/login', authorization.loginPost);
 router.post('/register', authorization.registerPost);
 
+// GET logout
+router.get('/logout', authorization.logout);
+
+
+
 module.exports = router;

@@ -23,12 +23,19 @@ module.exports.loginPost = function(req,res){
 
         var loginUser = User.find({email:req.body.Email},function(err,docs){
             if (err){
-                console.log(err)
-            }
+
+                // Send error flask message
+                req.session.sessionFlash = {
+                    type: 'alert alert-danger',
+                    message: 'Something went wrong!'
+                }
+                res.redirect('login');
+                    }
+
             else {
 
                 // If mongoose res not empity:
-                if (docs[0] !== []) {
+                if (docs.length > 0) {
                     
                     if (docs[0]['password'] === req.body.Password) {
                         
@@ -96,8 +103,6 @@ module.exports.registerPost = function(req,res){
 
     } else {
 
-        console.log(req.body.Password,req.body.PasswordVerify)
-
         var newUser = new User({
             name: req.body.Name,
             surname: req.body.Surname,
@@ -106,14 +111,39 @@ module.exports.registerPost = function(req,res){
             phone: req.body.PhoneNumber
         })
 
-        newUser.save();
+        newUser.save(function(err){
+            if (err) {
 
-        req.session.sessionFlash = {
-            type: 'alert alert-success',
-            message: 'Account created successfully!'
-        }
-        res.redirect('/');
+                req.session.sessionFlash = {
+                    type: 'alert alert-danger',
+                    message: 'This email address is not available!'
+                }
+                res.redirect('register');
 
+            } else {
+
+                req.session.sessionFlash = {
+                    type: 'alert alert-success',
+                    message: 'Account created successfully!'
+                }
+                res.redirect('/');
+            }
+        });
     }
 };
 
+
+// GET method for logout process
+module.exports.logout = function(req,res){
+    if (req.session) {
+        // delete session object
+        req.session.destroy(function (err,doc) {
+            if (!err) {
+                res.redirect('/');
+            } else {
+                // Something went wrong!
+                res.redirect('/');
+            }
+        });
+    }
+};
